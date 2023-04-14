@@ -12,27 +12,62 @@ app.use(express.static('static'));
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: true}));
 
+let date_time = new Date();
 
 let comments = [
     {
         sn: uuid(),
         comment: 'Chlo movie dekhne chlte hain',
-        user: 'Ritik'
+        user: 'Ritik',
+        username: '@raj769417',
+        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
+        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
+        image: `4.png`
     },
     {
         sn: uuid(),
         comment: 'John wick 4 dekhte hai',
-        user: 'Shubham'
+        user: 'Shubham',
+        username: '@goswami420',
+        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
+        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
+        image: `2.png`
     },
     {
         sn: uuid(),
         comment: 'Waise Avatar 2 bhi release ho chuki h',
-        user: 'Utkarsh'
+        user: 'Utkarsh',
+        username: '@uvtgrt000',
+        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
+        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
+        image: `3.png`
     },
     {
         sn: uuid(),
         comment: 'Pehle bahar chlte h phit decide kr lege',
-        user: 'Kshitij'
+        user: 'Kshitij',
+        username: '@kshiminu10',
+        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
+        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
+        image: `5.png`
+    },
+    {
+        sn: uuid(),
+        comment: 'Chlo movie dekhne chlte hain',
+        user: 'Ritik',
+        username: '@raj769417',
+        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
+        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
+        image: `4.png`
+    },
+    {
+        sn: uuid(),
+        comment: 'John wick 4 dekhte hai',
+        user: 'Shubham',
+        username: '@goswami420',
+        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
+        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
+        image: `2.png`
     }
 ]
 
@@ -58,7 +93,6 @@ app.delete('/comments/:id', (req, res) => {
     comments.splice(index, 1);
 
     res.redirect('/comments');
-
 })
 
 app.post('/comments', (req, res) => {
