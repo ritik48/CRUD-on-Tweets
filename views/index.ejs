@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        li {
+            margin-bottom: 15px;
+        }
+
+        .comment:hover {
+            color: white;
+        }
+        .li-cont {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Comments</h1>
+    <ul>
+        <% for(let comment of comments) { %>
+            <li> 
+                <div class="li-cont">
+                    <a href="/comments/show/<%= comment.sn %>" class="comment">
+                        <%= comment.comment %>
+                    </a><span class="user">- <%= comment.user %> </span>
+                    <div class="btn-cont">
+                        <form action="/comments/<%= comment.sn %>?_method=PATCH" method="POST"><button href=""
+                            class="btn primary-btn">Edit</button></form>
+                        
+                        <form action="/comments/<%= comment.sn %>?_method=DELETE" method="POST"><button href=""
+                                class="btn secondary-btn">Delete</button></form>
+                    </div>
+                </div>
+            </li>
+            <% } %>
+    </ul>
+    <a href="/comments/new" class="btn primary-btn">New</a>
+</body>
+
+</html>
