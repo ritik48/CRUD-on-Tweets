@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,25 +13,32 @@
         }
     </style>
 </head>
+
 <body>
     <div>
-        <p> comment id : <%= sn %> </p>
-        <h3 class="comment"> <%= comment %></h3>
-        <p class="user">By - <%= user %></p>
+        <p> comment id : <%= sn %>
+        </p>
+        <h3 class="comment">
+            <%= comment %>
+        </h3>
+        <p class="user">By - <%= user %>
+        </p>
     </div>
     <div class="btn-cont">
-        <form action="/comments" method="GET"><button href=""
-            class="btn primary-btn">Home</button>
-        </form>
-        
-        <form action="/comments/edit/<%= sn %>?_method=PATCH" method="POST"><button href="" class="btn primary-btn">Edit</button>
+        <form action="/comments" method="GET"><button href="" class="btn primary-btn">Home</button>
         </form>
 
-        <form action="/comments/<%= sn %>?_method=DELETE" method="POST"><button href="" class="btn secondary-btn">Delete</button>
+        <form action="/comments/edit/<%= sn %>?_method=PATCH" method="POST"><button href=""
+                class="btn primary-btn">Edit</button>
+        </form>
+
+        <form action="/comments/<%= sn %>?_method=DELETE" method="POST"><button href=""
+                class="btn secondary-btn">Delete</button>
         </form>
 
 
     </div>
-    
+
 </body>
+
 </html>
