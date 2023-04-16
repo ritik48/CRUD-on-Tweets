@@ -1,0 +1,246 @@
+:root {
+    --primary-color: black;
+    --secondary-color: white;
+    --accent-color: grey;
+
+    /* background gradient  */
+
+    --primary-gradient-dark: rgb(237, 95, 1);
+    --primary-gradient-light: skyblue;
+    --secondary-gradient: rgb(33, 33, 33);
+
+    --bg-gradient-tp: var(--primary-gradient-light);
+    --bg-gradient-bt: var(--secondary-gradient);
+
+    /* color mode btn */
+
+    --mode-color-light: black;
+    --mode-color-dark: rgb(87, 87, 87);
+
+    --mode-color: var(--mode-color-light);
+
+    /* nav link hover color */
+
+    --nav-link-hover-dark: white;
+    --nav-link-hover-light: black;
+
+    --nav-link-hover: var(--nav-link-hover-light);
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    transition: 0.10s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(var(--bg-gradient-tp), var(--bg-gradient-bt));
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-block: 20px;
+
+}
+.flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav {
+    background-color: var(--secondary-color);
+    padding: 15px 20px;
+    font-weight: bold;
+    gap: 40px;
+}
+
+nav .nav-link:hover {
+    color: var(--nav-link-hover);
+    cursor: pointer;
+}
+
+nav>div:first-child {
+    font-weight: bold;
+    font-size: 2rem;
+
+    gap: 10px;
+}
+
+nav>div:nth-child(2) {
+    gap: 20px;
+
+    font-size: 1.5rem;
+}
+
+.tweets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 2px;
+    height: 75%;
+
+    overflow-y: scroll;
+}
+
+.tweet-wrapper {
+    width: 70%;
+    max-width: 450px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+
+    transition: 0.3s ease-in-out;
+}
+
+img.profile-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+img.twitter-icon {
+    width: 23px;
+    height: 23px;
+    object-fit: cover;
+}
+
+.tweet-contents {
+    flex-direction: column;
+    align-items: start;
+
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+
+    font-size: 1rem;
+    gap: 0.7em;
+
+    width: 100%;
+
+    padding: 1em 2em;
+    margin: 0 auto;
+    border-radius: 0.5em;
+
+    box-shadow: 0 0 5px 0px rgba(12, 12, 12, 0.4);
+
+}
+
+.tweet-wrapper:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.tweet-header {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile-info {
+    gap: 0.5em;
+}
+
+.tweet-timing {
+    gap: 0.25em;
+}
+
+p.username {
+    font-weight: bold;
+}
+
+p:not(.tweet) {
+    font-size: 0.8em;
+    color: var(--accent-color);
+}
+
+.tweet-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-btn {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.642);
+}
+
+
+.delete {
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+}
+
+.delete > i {
+    font-size: 20px;
+    color: black;
+}
+
+.delete:hover > i {
+    color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.selected {
+    border-bottom: 2px solid black;
+}
+
+.mode {
+    border: 2px solid black;
+    width: 44px;
+    height: 24px;
+    background-color: var(--mode-color);
+    border-radius: 10%;
+
+    position: relative;
+    transition: 0.35s ease-in-out;
+
+}
+
+.square {
+    position: absolute;
+    background-color: rgb(255, 230, 69);
+
+    width: 18px;
+    height: 16px;
+
+    left: 2px;
+    top: 2px;
+
+    border-radius: 10%;
+
+    transition: 0.35s ease-in-out;
+
+}
+
+.square.dark {
+    transform: translateX(100%);
+}
+
+.mode:hover {
+    cursor: pointer;
+}
