@@ -93,6 +93,46 @@ nav>div:nth-child(2) {
     font-size: 1.5rem;
 }
 
+.selected {
+    border-bottom: 2px solid black;
+}
+
+.mode {
+    border: 2px solid black;
+    width: 44px;
+    height: 24px;
+    background-color: var(--mode-color);
+    border-radius: 10%;
+
+    position: relative;
+    transition: 0.35s ease-in-out;
+
+}
+
+.square {
+    position: absolute;
+    background-color: rgb(255, 230, 69);
+
+    width: 18px;
+    height: 16px;
+
+    left: 2px;
+    top: 2px;
+
+    border-radius: 10%;
+
+    transition: 0.35s ease-in-out;
+
+}
+
+.square.dark {
+    transform: translateX(100%);
+}
+
+.mode:hover {
+    cursor: pointer;
+}
+
 .tweets-container {
     display: flex;
     flex-direction: column;
@@ -199,48 +239,10 @@ p:not(.tweet) {
 
 .delete:hover > i {
     color: white;
+    cursor: pointer;
 }
 
 .btn:hover {
     cursor: pointer;
 }
 
-.selected {
-    border-bottom: 2px solid black;
-}
-
-.mode {
-    border: 2px solid black;
-    width: 44px;
-    height: 24px;
-    background-color: var(--mode-color);
-    border-radius: 10%;
-
-    position: relative;
-    transition: 0.35s ease-in-out;
-
-}
-
-.square {
-    position: absolute;
-    background-color: rgb(255, 230, 69);
-
-    width: 18px;
-    height: 16px;
-
-    left: 2px;
-    top: 2px;
-
-    border-radius: 10%;
-
-    transition: 0.35s ease-in-out;
-
-}
-
-.square.dark {
-    transform: translateX(100%);
-}
-
-.mode:hover {
-    cursor: pointer;
-}
