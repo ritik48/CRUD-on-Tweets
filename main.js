@@ -85,6 +85,7 @@ app.get('/comments/new', (req, res) => {
     res.render('create');
 })
 
+
 app.delete('/comments/:id', (req, res) => {
     const { id } = req.params;
     const requested_comment = comments.find(comment => comment.sn===id);
@@ -98,6 +99,10 @@ app.delete('/comments/:id', (req, res) => {
 app.post('/comments', (req, res) => {
     const comment = req.body;
     comment.sn = uuid();
+    comment.time=`${date_time.getHours()}:${date_time.getMinutes()}`;
+    comment.date=`${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`;
+    comment.image='1.png';
+
     comments.push(comment);
     
     res.redirect('/comments');
