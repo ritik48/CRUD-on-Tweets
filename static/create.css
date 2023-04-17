@@ -1,0 +1,66 @@
+.container {
+    background-color: var(--secondary-color);
+
+    width: 75%;
+    max-width: 550px;
+
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+
+    border-radius: 10px;
+}
+
+button {
+    background-color: rgb(2, 163, 232);
+    color: white;
+    border: none;
+    font-weight: bold;
+
+    font-size: 1rem;
+    padding: 0.35em 0.85em;
+    border-radius: 50px;
+
+    align-self: flex-end;
+}
+button:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+button:active {
+    transform: translate(1px,1px);
+}
+input, textarea {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    outline: none;
+    border: none;
+
+    font-size: 1rem;
+}
+
+input {
+    border-bottom: 1px solid var(--primary-color);
+    padding: 5px;
+}
+input::placeholder, textarea::placeholder {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.user-info {
+    padding: 4px;
+    gap: 8px;
+}
+.input-wrapper {
+    width: 100%;
+    align-items: start;
+    gap: 8px;
+}
+textarea {
+    flex: 1;
+    height: 100px;
+}
