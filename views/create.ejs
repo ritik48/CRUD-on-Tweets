@@ -6,30 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
-    <link rel="stylesheet" href="/style.css">
-    <style>
-        
-        input {
-            outline: none;
-        }
-        input:focus-within {
-            border: 1px solid rgb(255, 0, 0);
-        }
-        a > .btn{
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/create.css">
 </head>
-
 <body>
-    <h2>Write a comment</h2>
-    <form action="/comments" method="POST">
-        <input type="text" name="comment" placeholder="comment...">
-        <input type="text" name="user" placeholder="user...">
-        <button class="btn primary-btn">Post</button>
+    <%- include('partials/navbar') %>
+    <form class="container flex" action="/comments" method="POST">
+        <div class="user-info flex">
+            <input type="text" class="user" name="user" placeholder="user" required>
+            <input type="text" class="username" name="username" placeholder="username" required>
+        </div>
+        <div class="input-wrapper flex">
+            <img src="/assets/1.png" alt="" class="profile-icon">
+            <textarea class="tweet-content" name="comment" id="" placeholder="What's happening?" required></textarea>
+        </div>
+        <button>Tweet</button>
     </form>
-    
-    <a href="/comments"><button class="btn secondary-btn">Home</button></a>
+
+    <script src="/nav.js"></script>
+
 </body>
 
 </html>
