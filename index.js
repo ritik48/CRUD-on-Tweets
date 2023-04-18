@@ -27,7 +27,7 @@ const connectDB = async () => {
     }
 }
 
-app.get('/tweets', async (req, res) => {
+app.get('/', async (req, res) => {
     const tweets = await Tweet.find({});
     res.render('index', { tweets });
 })
