@@ -14,10 +14,10 @@ app.use(express.urlencoded({extended: true}));
 
 let date_time = new Date();
 
-let comments = [
+let tweets = [
     {
         sn: uuid(),
-        comment: 'Chlo movie dekhne chlte hain',
+        tweet: 'Chlo movie dekhne chlte hain',
         user: 'Ritik',
         username: '@raj769417',
         time: `${date_time.getHours()}:${date_time.getMinutes()}`,
@@ -26,7 +26,7 @@ let comments = [
     },
     {
         sn: uuid(),
-        comment: 'John wick 4 dekhte hai',
+        tweet: 'John wick 4 dekhte hai',
         user: 'Shubham',
         username: '@goswami420',
         time: `${date_time.getHours()}:${date_time.getMinutes()}`,
@@ -35,7 +35,7 @@ let comments = [
     },
     {
         sn: uuid(),
-        comment: 'Waise Avatar 2 bhi release ho chuki h',
+        tweet: 'Waise Avatar 2 bhi release ho chuki h',
         user: 'Utkarsh',
         username: '@uvtgrt000',
         time: `${date_time.getHours()}:${date_time.getMinutes()}`,
@@ -44,7 +44,7 @@ let comments = [
     },
     {
         sn: uuid(),
-        comment: 'Pehle bahar chlte h phit decide kr lege',
+        tweet: 'Pehle bahar chlte h phit decide kr lege',
         user: 'Kshitij',
         username: '@kshiminu10',
         time: `${date_time.getHours()}:${date_time.getMinutes()}`,
@@ -53,7 +53,7 @@ let comments = [
     },
     {
         sn: uuid(),
-        comment: 'Chlo movie dekhne chlte hain',
+        tweet: 'Chlo movie dekhne chlte hain',
         user: 'Ritik',
         username: '@raj769417',
         time: `${date_time.getHours()}:${date_time.getMinutes()}`,
@@ -62,7 +62,7 @@ let comments = [
     },
     {
         sn: uuid(),
-        comment: 'John wick 4 dekhte hai',
+        tweet: 'John wick 4 dekhte hai',
         user: 'Shubham',
         username: '@goswami420',
         time: `${date_time.getHours()}:${date_time.getMinutes()}`,
@@ -71,41 +71,41 @@ let comments = [
     }
 ]
 
-app.get('/comments', (req, res) => {
-    res.render('index', { comments });
+app.get('/tweets', (req, res) => {
+    res.render('index', { tweets });
 })
 
-app.get('/comments/show/:id', (req, res) => {
+app.get('/tweets/show/:id', (req, res) => {
     const { id } = req.params;
-    const requested_comment = comments.find(comment => comment.sn===id);
-    res.render('comment', { ...requested_comment });
+    const requested_tweets = tweets.find(tweet => tweet.sn===id);
+    res.render('tweet', { ...requested_tweet });
 })
 
-app.get('/comments/new', (req, res) => {
+app.get('/tweets/new', (req, res) => {
     res.render('create');
 })
 
 
-app.delete('/comments/:id', (req, res) => {
+app.delete('/tweets/:id', (req, res) => {
     const { id } = req.params;
-    const requested_comment = comments.find(comment => comment.sn===id);
-    const index = comments.indexOf(requested_comment);
+    const requested_tweet = tweets.find(tweet => tweet.sn===id);
+    const index = tweets.indexOf(requested_tweet);
 
-    comments.splice(index, 1);
+    tweets.splice(index, 1);
 
-    res.redirect('/comments');
+    res.redirect('/tweets');
 })
 
-app.post('/comments', (req, res) => {
-    const comment = req.body;
-    comment.sn = uuid();
-    comment.time=`${date_time.getHours()}:${date_time.getMinutes()}`;
-    comment.date=`${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`;
-    comment.image='1.png';
+app.post('/tweets', (req, res) => {
+    const tweet = req.body;
+    tweet.sn = uuid();
+    tweet.time=`${date_time.getHours()}:${date_time.getMinutes()}`;
+    tweet.date=`${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`;
+    tweet.image='1.png';
 
-    comments.push(comment);
+    tweets.push(tweet);
     
-    res.redirect('/comments');
+    res.redirect('/tweets');
 })
 
 app.get('*', (req, res) => {

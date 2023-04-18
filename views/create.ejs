@@ -12,14 +12,14 @@
 </head>
 <body>
     <%- include('partials/navbar') %>
-    <form class="container flex" action="/comments" method="POST">
+    <form class="container flex" action="/tweets" method="POST">
         <div class="user-info flex">
             <input type="text" class="user" name="user" placeholder="user" required>
             <input type="text" class="username" name="username" placeholder="username" required>
         </div>
         <div class="input-wrapper flex">
             <img src="/assets/1.png" alt="" class="profile-icon">
-            <textarea class="tweet-content" name="comment" id="" placeholder="What's happening?" required></textarea>
+            <textarea class="tweet-content" name="tweet" id="" placeholder="What's happening?" required></textarea>
         </div>
         <button>Tweet</button>
     </form>

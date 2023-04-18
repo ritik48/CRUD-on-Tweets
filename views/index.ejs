@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comments</title>
+    <title>tweets</title>
     <link rel="stylesheet" href="/base.css">
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,31 +15,31 @@
 
     <h2>All Tweets</h2>
     <section class="tweets-container">
-        <% for(let comment of comments) { %>
+        <% for(let tweet of tweets) { %>
             <div class="tweet-wrapper flex">
                 <div class="tweet-contents flex">
                     <div class="tweet-header flex">
                         <div class="profile-info flex">
-                            <img src="/assets/<%= comment.image %>" alt="" class="profile-icon">
+                            <img src="/assets/<%= tweet.image %>" alt="" class="profile-icon">
                             <h3 class="user">
-                                <%= comment.user %>
+                                <%= tweet.user %>
                             </h3>
                             <p class="username">
-                                <%= comment.username %>
+                                <%= tweet.username %>
                             </p>
                         </div>
                         <img src="./assets/twitter.png" alt="" class="twitter-icon">
                     </div>
                     <p class="tweet">
-                        <%= comment.comment %>
+                        <%= tweet.tweet %>
                     </p>
                     <div class="tweet-timing flex">
                         <p class="tweet-time">
-                            <%= comment.time %>
+                            <%= tweet.time %>
                         </p>
                         <p>&#183;</p>
                         <p class="tweet-date">
-                            <%= comment.date %>
+                            <%= tweet.date %>
                         </p>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <!-- <form action="">
                         <button class="btn primary-btn"><img class="img-btn" src="./assets/pencil.png" alt=""></button>
                     </form> -->
-                    <form action="/comments/<%= comment.sn %>?_method=DELETE" method="POST">
+                    <form action="/tweets/<%= tweet.sn %>?_method=DELETE" method="POST">
                         <button class="delete"><i class='fa fa-trash'></i></button>
                     </form>
                 </div>
