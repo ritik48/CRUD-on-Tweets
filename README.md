@@ -2,6 +2,7 @@
 
 I created this simple web app to practice CRUD (create, read, update and delete) operations.
 
+live : https://dark-tan-beetle-cuff.cyclic.app/
 ### Sample Images:
   Dark mode
   
