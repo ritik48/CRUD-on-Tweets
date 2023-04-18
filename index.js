@@ -48,19 +48,18 @@ app.delete('/tweets/:id', async (req, res) => {
 
     await Tweet.findByIdAndDelete(id);
 
-    res.redirect('/tweets');
+    res.redirect('/');
 })
 
 app.post('/tweets', async (req, res) => {
     const tweet = req.body;
-
-    tweet.image='1.png';
+    tweet.image =`${Math.floor(Math.random() * 4) + 1}.png`;
 
     const t1 = new Tweet(tweet);
     await t1.save();
     
     
-    res.redirect('/tweets');
+    res.redirect('/');
 })
 
 app.get('*', (req, res) => {
