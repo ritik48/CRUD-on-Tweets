@@ -1362,7 +1362,7 @@ Movie.findById(id).then(data => console.log(data));
 Movie.updateOne({title: 'avenger'}, {rating: '9'}).then(res => console.log(res)); -> res just contains info about how many docs where updated
 
 
-Movie.updateOneAndUpdate({title: 'avenger'}, {rating: 7}, {new: true}).then(data => console.log(data));
+Movie.findOneAndUpdate({title: 'avenger'}, {rating: 7}, {new: true}).then(data => console.log(data));
 
 gives back the new updated data. (new -> default is false)
 

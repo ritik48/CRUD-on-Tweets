@@ -1,8 +1,14 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const {v4: uuid} = require('uuid');
 const methodOverride = require('method-override');
+const Tweet = require('./models/tweet');
 
+mongoose.connect('mongodb://127.0.0.1:27017/tweets')
+    .then(() => console.log("MONGOOSE CONNECTION ESTABLISHED."))
+    .catch(() => console.log("MONGOOSE ERROR !!!"));
+    
 
 const app = express();
 app.set('view engine','ejs');
@@ -12,66 +18,9 @@ app.use(express.static('static'));
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: true}));
 
-let date_time = new Date();
 
-let tweets = [
-    {
-        sn: uuid(),
-        tweet: 'Chlo movie dekhne chlte hain',
-        user: 'Ritik',
-        username: '@raj769417',
-        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
-        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
-        image: `4.png`
-    },
-    {
-        sn: uuid(),
-        tweet: 'John wick 4 dekhte hai',
-        user: 'Shubham',
-        username: '@goswami420',
-        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
-        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
-        image: `2.png`
-    },
-    {
-        sn: uuid(),
-        tweet: 'Waise Avatar 2 bhi release ho chuki h',
-        user: 'Utkarsh',
-        username: '@uvtgrt000',
-        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
-        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
-        image: `3.png`
-    },
-    {
-        sn: uuid(),
-        tweet: 'Pehle bahar chlte h phit decide kr lege',
-        user: 'Kshitij',
-        username: '@kshiminu10',
-        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
-        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
-        image: `5.png`
-    },
-    {
-        sn: uuid(),
-        tweet: 'Chlo movie dekhne chlte hain',
-        user: 'Ritik',
-        username: '@raj769417',
-        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
-        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
-        image: `4.png`
-    },
-    {
-        sn: uuid(),
-        tweet: 'John wick 4 dekhte hai',
-        user: 'Shubham',
-        username: '@goswami420',
-        time: `${date_time.getHours()}:${date_time.getMinutes()}`,
-        date: `${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`,
-        image: `2.png`
-    }
-]
-
-app.get('/tweets', (req, res) => {
+app.get('/tweets', async (req, res) => {
+    const tweets = await Tweet.find({});
     res.render('index', { tweets });
 })
 
@@ -86,24 +35,22 @@ app.get('/tweets/new', (req, res) => {
 })
 
 
-app.delete('/tweets/:id', (req, res) => {
+app.delete('/tweets/:id', async (req, res) => {
     const { id } = req.params;
-    const requested_tweet = tweets.find(tweet => tweet.sn===id);
-    const index = tweets.indexOf(requested_tweet);
 
-    tweets.splice(index, 1);
+    await Tweet.findByIdAndDelete(id);
 
     res.redirect('/tweets');
 })
 
-app.post('/tweets', (req, res) => {
+app.post('/tweets', async (req, res) => {
     const tweet = req.body;
-    tweet.sn = uuid();
-    tweet.time=`${date_time.getHours()}:${date_time.getMinutes()}`;
-    tweet.date=`${("0" + date_time.getDate()).slice(-2)}/${("0" + date_time.getMonth()+1).slice(-2)}/${date_time.getFullYear()}`;
+
     tweet.image='1.png';
 
-    tweets.push(tweet);
+    const t1 = new Tweet(tweet);
+    await t1.save();
+    
     
     res.redirect('/tweets');
 })
