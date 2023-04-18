@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -5,10 +6,6 @@ const {v4: uuid} = require('uuid');
 const methodOverride = require('method-override');
 const Tweet = require('./models/tweet');
 
-mongoose.connect('mongodb://127.0.0.1:27017/tweets')
-    .then(() => console.log("MONGOOSE CONNECTION ESTABLISHED."))
-    .catch(() => console.log("MONGOOSE ERROR !!!"));
-    
 
 const app = express();
 app.set('view engine','ejs');
@@ -18,6 +15,17 @@ app.use(express.static('static'));
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: true}));
 
+const PORT = process.env.PORT || 1234;
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI);
+        console.log(`MongoDB connected : ${conn.connection.host}`);
+    } catch(error) {
+        console.log(error);
+        process.exit(1);
+    }
+}
 
 app.get('/tweets', async (req, res) => {
     const tweets = await Tweet.find({});
@@ -59,6 +67,9 @@ app.get('*', (req, res) => {
     res.send("<h1> Not a valid route !!! </h1>");
 })
 
-app.listen(1234, () => {
-    console.log("Listening on  port 1234...");
-})
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Listening on  port ${PORT}...`);
+    })
+});
+
