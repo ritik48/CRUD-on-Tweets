@@ -1,15 +1,5 @@
 const mongoose = require('mongoose');
 
-const getDate = () => {
-    const d=new Date();
-    return `${("0" + d.getDate()).slice(-2)}/${("0" + (d.getMonth()+1)).slice(-2)}/${d.getFullYear()}`;
-}
-
-const getTime = () => {
-    const d=new Date();
-    return `${d.getHours()}:${d.getMinutes()}`;
-}
-
 const tweetSchema = new mongoose.Schema({
     user: {
         type: String,
@@ -25,11 +15,9 @@ const tweetSchema = new mongoose.Schema({
     },
     date: {
         type: String,
-        default: () => getDate()
     },
     time: {
         type: String,
-        default: () => getTime()
     },
     image: {
         type: String,

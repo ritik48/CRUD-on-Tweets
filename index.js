@@ -17,6 +17,17 @@ app.use(express.urlencoded({extended: true}));
 
 const PORT = process.env.PORT || 1234;
 
+const getDate = () => {
+    const d=new Date();
+    return `${("0" + d.getDate()).slice(-2)}/${("0" + (d.getMonth()+1)).slice(-2)}/${d.getFullYear()}`;
+}
+
+const getTime = () => {
+    const d=new Date();
+    return `${d.getHours()}:${d.getMinutes()}`;
+}
+
+
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI);
@@ -54,6 +65,9 @@ app.delete('/tweets/:id', async (req, res) => {
 app.post('/tweets', async (req, res) => {
     const tweet = req.body;
     tweet.image =`${Math.floor(Math.random() * 4) + 1}.png`;
+
+    tweet.time=getTime();
+    tweet.date=getDate();
 
     const t1 = new Tweet(tweet);
     await t1.save();
