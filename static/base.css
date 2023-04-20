@@ -89,7 +89,7 @@ h2 {
     color: rgb(255, 255, 255);
     text-align: center;
 
-    margin-bottom: 10px;
+    margin: 10px 0;
 
 }
 .bg-dark {
@@ -185,4 +185,24 @@ footer img.twitter-icon {
     width: 18px;
     height: 18px;
     object-fit: cover;
+}
+
+@media screen and (min-width:430px) {
+    section.tweets-container {
+        height: 80%;
+
+        overflow-y: scroll;
+        
+    }
+    body {
+        overflow: hidden;
+        height: 100vh;
+        padding-top: 70px;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 }
