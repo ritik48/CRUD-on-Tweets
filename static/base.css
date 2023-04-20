@@ -79,17 +79,21 @@ a {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(var(--bg-gradient-tp), var(--bg-gradient-bt));
-    height: 100vh;
 
-    overflow: hidden;
+    min-height: 100vh;
+    padding-top: 140px;
 }
 
 h2 {
     font-size: 2rem;
     color: rgb(255, 255, 255);
     text-align: center;
-    margin-block: 20px;
 
+    margin-bottom: 10px;
+
+}
+.bg-dark {
+    background-color: rgb(0, 0, 0);
 }
 .flex {
     display: flex;
@@ -102,6 +106,11 @@ nav {
     padding: 15px 20px;
     font-weight: bold;
     gap: 40px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 a.nav-link {
@@ -161,4 +170,19 @@ nav>div:nth-child(2) {
 
 .mode:hover {
     cursor: pointer;
+}
+
+footer {
+    background-color: black;
+    padding: 10px 20px;
+
+    margin-top: 10px;
+}
+footer .project-name {
+    gap: 10px;
+}
+footer img.twitter-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
 }
