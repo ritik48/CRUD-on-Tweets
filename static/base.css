@@ -80,8 +80,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(var(--bg-gradient-tp), var(--bg-gradient-bt));
 
-    min-height: 100vh;
-    padding-top: 140px;
+    height: 100vh;
+
+    padding-top: 70px;
 }
 
 h2 {
@@ -90,6 +91,7 @@ h2 {
     text-align: center;
 
     margin: 10px 0;
+
 
 }
 .bg-dark {
@@ -175,7 +177,10 @@ nav>div:nth-child(2) {
 footer {
     background-color: black;
     padding: 10px 20px;
-
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin-top: 10px;
 }
 footer .project-name {
@@ -187,17 +192,10 @@ footer img.twitter-icon {
     object-fit: cover;
 }
 
-@media screen and (min-width:430px) {
-    section.tweets-container {
-        height: 80%;
-
-        overflow-y: scroll;
-        
-    }
+@media screen and (max-width:420px) {
     body {
-        overflow: hidden;
-        height: 100vh;
-        padding-top: 70px;
+        padding-top: 140px;
+
     }
     footer {
         position: fixed;
