@@ -52,8 +52,13 @@ input::placeholder, textarea::placeholder {
     font-size: 1rem;
 }
 .user-info {
+    width: 100%;
     padding: 4px;
     gap: 8px;
+    overflow: hidden;
+}
+.user-info input{
+    flex: 1;
 }
 .input-wrapper {
     width: 100%;
