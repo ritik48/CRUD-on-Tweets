@@ -83,7 +83,7 @@ app.delete('/tweets/:id', async (req, res) => {
 
 app.post('/tweets', async (req, res) => {
     const tweet = req.body;
-    tweet.image =`${Math.floor(Math.random() * 4) + 1}.png`;
+    tweet.image =`${Math.floor(Math.random() * 4) + 2}.png`;
 
     tweet.time=getTime();
     tweet.date=getDate();
