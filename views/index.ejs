@@ -16,7 +16,7 @@
     <h2>All Tweets</h2>
     <section class="tweets-container">
         <% for(let tweet of tweets) { %>
-            <div class="tweet-wrapper flex">
+            <a class="tweet-wrapper flex" href="/edit/<%= tweet.id %>">
                 <div class="tweet-contents flex">
                     <div class="tweet-header flex">
                         <div class="profile-info flex">
@@ -51,7 +51,7 @@
                         <button class="delete"><i class='fa fa-trash'></i></button>
                     </form>
                 </div>
-            </div>
+            </a>
 
             <% } %>
     </section>

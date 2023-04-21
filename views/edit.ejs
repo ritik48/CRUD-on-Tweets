@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/create.css">
+
+    <style>
+        @media screen and (max-width:420px) {
+            h1 {
+                margin-top: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <div class="container flex">
+
+    <h1 style="color: white;">Edit</h1>
+    <form class="flex" action="/edit/<%= tweet.id %>?_method=PATCH" method="POST">
+        <div class="user-info flex">
+            <input type="text" class="user" name="user" placeholder="user" value="<%= tweet.user %>" required>
+            <input type="text" class="username" name="username"  value="<%= tweet.username %>" placeholder="username" required>
+        </div>
+        <div class="input-wrapper flex">
+            <img src="/assets/<%= tweet.image %>" alt="" class="profile-icon">
+            <textarea class="tweet-content" name="tweet" id="" placeholder="What's happening?" required><%= tweet.tweet %></textarea>
+        </div>
+        <button class="btn-success">Update</button>
+    </form>
+</div>
+    <%- include('partials/footer') %>
+
+    <script src="/nav.js"></script>
+
+</body>
+
+</html>

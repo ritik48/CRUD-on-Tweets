@@ -53,6 +53,25 @@ app.get('/tweets/new', (req, res) => {
     res.render('create');
 })
 
+app.get('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const required_tweet = await Tweet.findById(id);
+    res.render('edit', { tweet: required_tweet});
+})
+
+app.patch('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    const updated_tweet = req.body;
+
+    updated_tweet.date = getDate();
+    updated_tweet.time = getTime();
+
+    await Tweet.findOneAndUpdate({_id: id}, updated_tweet);
+
+    res.redirect('/');
+})
+
 
 app.delete('/tweets/:id', async (req, res) => {
     const { id } = req.params;

@@ -1,17 +1,23 @@
 .container {
-    background-color: var(--secondary-color);
-
+    flex-direction: column;
+    align-items: start;
     width: 75%;
     max-width: 550px;
 
     margin: 0 auto;
     margin-top: 100px;
-    padding: 20px;
+}
+
+form {
+    background-color: var(--secondary-color);
 
     flex-direction: column;
     align-items: start;
     gap: 15px;
 
+    width: 100%;
+
+    padding: 20px;
     border-radius: 10px;
 }
 
